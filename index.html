@@ -170,6 +170,54 @@
     max-width: 60ch;
   }
 
+  /* On this day */
+  .otd { padding: 2.25rem 0 0; }
+  .otd-card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 8px solid var(--gold);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem 1.3rem;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.4rem;
+    align-items: start;
+  }
+  .otd-year {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    font-size: 3.4rem;
+    line-height: 0.9;
+    color: var(--heading);
+    min-width: 5.5rem;
+  }
+  .otd-year small {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 0.3rem;
+  }
+  .otd-text h3 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 1.05;
+    margin: 0 0 0.4rem;
+  }
+  .otd-text p { margin: 0; max-width: 62ch; }
+  .otd-more {
+    margin-top: 0.9rem;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+  }
+  .otd-more a { color: var(--heading); font-weight: 700; }
+  @media (max-width: 40rem) {
+    .otd-card { grid-template-columns: 1fr; gap: 0.6rem; }
+    .otd-year { font-size: 2.6rem; }
+  }
+
   footer {
     border-top: 1px solid var(--rule);
     padding: 1.25rem;
@@ -208,6 +256,25 @@
 </section>
 
 <!-- ============================================================
+     ON THIS DAY
+     The box fills itself from the RAMS_HISTORY list in the script
+     at the bottom of the page. To add a moment, copy one line in
+     that list: { m: month, d: day, y: year, h: "headline", t: "text" }
+     ============================================================ -->
+<section class="otd">
+  <div class="wrap">
+    <div class="otd-card" id="otd">
+      <div class="otd-year"><small id="otd-label">On this day</small><span id="otd-year"></span></div>
+      <div class="otd-text">
+        <h3 id="otd-headline"></h3>
+        <p id="otd-body"></p>
+        <div class="otd-more" id="otd-more"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      ARCHIVE
      Newest first. Copy one <li class="story"> block per column.
      ============================================================ -->
@@ -230,6 +297,77 @@
 </section>
 
 <footer>Horns Up Dispatch. Independent fan analysis, not affiliated with the Los Angeles Rams or the NFL.</footer>
+
+<script>
+  // Rams moments. m = month (1-12), d = day, y = year.
+  // Add lines freely; order doesn't matter.
+  var RAMS_HISTORY = [
+    { m: 1,  d: 12, y: 2016, h: "The Rams come home", t: "NFL owners vote 30-2 to approve the franchise's return to Los Angeles after 21 seasons in St. Louis." },
+    { m: 1,  d: 12, y: 2017, h: "McVay hired", t: "At 30, Sean McVay becomes the youngest head coach in modern NFL history. He inherits a 4-12 team and wins the division in year one." },
+    { m: 1,  d: 20, y: 1980, h: "First Super Bowl trip", t: "The Rams lead the Steelers entering the fourth quarter of Super Bowl XIV before falling 31-19 at the Rose Bowl." },
+    { m: 1,  d: 20, y: 2019, h: "Zuerlein from 57 in the Superdome", t: "Greg Zuerlein's overtime field goal beats New Orleans 26-23 in the NFC Championship and sends the Rams to Super Bowl LIII." },
+    { m: 1,  d: 23, y: 2000, h: "Rams 11, Bucs 6", t: "A defensive slugfest in the NFC Championship ends with the Bert Emanuel non-catch and the Greatest Show on Turf headed to the Super Bowl." },
+    { m: 1,  d: 30, y: 2000, h: "The Tackle", t: "Mike Jones stops Kevin Dyson at the 1-yard line as time expires. Rams 23, Titans 16, and the franchise's first Super Bowl title." },
+    { m: 1,  d: 30, y: 2021, h: "Stafford for Goff", t: "The Rams agree to send Jared Goff and multiple first-round picks to Detroit for Matthew Stafford. One year later he's holding the Lombardi." },
+    { m: 2,  d: 3,  y: 2002, h: "Super Bowl XXXVI", t: "The 14-2 Rams fall 20-17 to New England on a last-second field goal, the game that launched the Patriots dynasty." },
+    { m: 2,  d: 3,  y: 2019, h: "Super Bowl LIII", t: "The Rams and Patriots play the lowest-scoring Super Bowl ever. New England wins 13-3 in Atlanta." },
+    { m: 2,  d: 13, y: 2022, h: "Champions at home", t: "Cooper Kupp's late touchdown and Aaron Donald's fourth-down pressure seal a 23-20 win over Cincinnati in Super Bowl LVI at SoFi Stadium." },
+    { m: 3,  d: 15, y: 2024, h: "Donald walks away", t: "Aaron Donald retires after ten seasons, three Defensive Player of the Year awards, and 111 sacks as an interior lineman." },
+    { m: 4,  d: 15, y: 1999, h: "Faulk arrives", t: "The Rams trade second- and fifth-round picks to Indianapolis for Marshall Faulk. He wins NFL MVP the following season." },
+    { m: 5,  d: 8,  y: 2014, h: "Pick 13: Aaron Donald", t: "Twelve teams pass on the Pitt defensive tackle. He wins Defensive Rookie of the Year and never looks back." },
+    { m: 9,  d: 12, y: 1999, h: "Warner's first start", t: "A former grocery clerk throws three touchdowns in a 27-10 win over Baltimore. The Greatest Show on Turf has its quarterback." },
+    { m: 9,  d: 12, y: 2016, h: "Back in the NFC West spotlight", t: "The relocated Rams open on Monday Night Football in Santa Clara and lose 28-0. The rebuild starts here." },
+    { m: 9,  d: 15, y: 2019, h: "Rams 27, Saints 9", t: "A dominant home win over New Orleans in the rematch of the NFC Championship. Drew Brees leaves with a thumb injury after a hit from Aaron Donald." },
+    { m: 9,  d: 18, y: 2016, h: "First home game in Los Angeles since 1994", t: "More than 91,000 fans pack the Coliseum for a 9-3 win over Seattle, the first Rams home game in LA in 22 years." },
+    { m: 12, d: 9,  y: 1984, h: "Dickerson passes O.J.", t: "Eric Dickerson breaks O.J. Simpson's single-season rushing record against Houston. He finishes the year with 2,105 yards, still the record." },
+    { m: 12, d: 16, y: 1945, h: "The first championship", t: "The Cleveland Rams beat Washington 15-14 in the NFL Championship Game on a safety, the franchise's first title, weeks before moving to Los Angeles." },
+    { m: 12, d: 23, y: 1951, h: "Champions of Los Angeles", t: "Norm Van Brocklin's 73-yard touchdown to Tom Fears beats the Browns 24-17 for the Rams' first championship on the West Coast." }
+  ];
+
+  (function () {
+    var now = new Date();
+    var m = now.getMonth() + 1, d = now.getDate();
+    var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+    function dayOfYear(mm, dd) {
+      var t = new Date(2001, mm - 1, dd);
+      return Math.round((t - new Date(2001, 0, 0)) / 86400000);
+    }
+    var today = dayOfYear(m, d);
+
+    // Exact matches first
+    var hits = RAMS_HISTORY.filter(function (e) { return e.m === m && e.d === d; });
+    var label = "On this day";
+
+    // Otherwise the closest moment within 7 days, either direction
+    if (!hits.length) {
+      var best = null, bestDist = 999;
+      RAMS_HISTORY.forEach(function (e) {
+        var dist = Math.abs(dayOfYear(e.m, e.d) - today);
+        dist = Math.min(dist, 365 - dist);
+        if (dist < bestDist) { bestDist = dist; best = e; }
+      });
+      if (best && bestDist <= 7) { hits = [best]; label = "This week in Rams history"; }
+      else if (best) { hits = [best]; label = "From the Rams archive"; }
+    }
+
+    var pick = hits[Math.floor(Math.random() * hits.length)];
+    if (!pick) { document.getElementById("otd").style.display = "none"; return; }
+
+    document.getElementById("otd-label").textContent = label + ", " + monthNames[pick.m - 1] + " " + pick.d;
+    document.getElementById("otd-year").textContent = pick.y;
+    document.getElementById("otd-headline").textContent = pick.h;
+    document.getElementById("otd-body").textContent = pick.t;
+
+    var more = document.getElementById("otd-more");
+    if (hits.length > 1) {
+      more.innerHTML = "Also on this date: " + hits.filter(function (e) { return e !== pick; })
+        .map(function (e) { return e.y + ", " + e.h; }).join(". ") + ".";
+    } else {
+      more.textContent = "";
+    }
+  })();
+</script>
 
 </body>
 </html>
