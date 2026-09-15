@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Case for Not Panicking: Rams After Melbourne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --royal: #003594;
+    --royal-deep: #001f5c;
+    --gold: #FFD100;
+    --sol: #FFA300;
+    --paper: #f7f6f2;
+    --ink: #14213a;
+    --ink-soft: #4a5570;
+    --rule: #d9dbe3;
+    --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0d1526;
+      --ink: #eef1f8;
+      --ink-soft: #aeb7cc;
+      --rule: #2a3550;
+      --card: #142038;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0d1526;
+    --ink: #eef1f8;
+    --ink-soft: #aeb7cc;
+    --rule: #2a3550;
+    --card: #142038;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 1.06rem;
+    line-height: 1.62;
+  }
+  img { max-width: 100%; }
+  a { color: var(--royal); }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+  /* Masthead */
+  .masthead {
+    background: var(--royal);
+    color: #fff;
+    border-bottom: 10px solid var(--gold);
+  }
+  .masthead-inner {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 1.1rem 1.25rem 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-family: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  }
+  .brand {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+  .brand span { color: var(--gold); }
+  .dateline {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #cfd8f2;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(180deg, var(--royal-deep) 0%, var(--royal) 100%);
+    color: #fff;
+    padding: 2.75rem 1.25rem 2.5rem;
+  }
+  .hero-inner { max-width: 68rem; margin: 0 auto; }
+  .kicker {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--gold);
+    margin: 0 0 0.6rem;
+  }
+  h1 {
+    font-family: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.6rem, 7vw, 5.4rem);
+    line-height: 0.96;
+    margin: 0 0 1.4rem;
+    max-width: 16ch;
+  }
+  .oneliner {
+    border-left: 6px solid var(--gold);
+    padding: 0.35rem 0 0.35rem 1.25rem;
+    max-width: 44rem;
+    margin: 0 0 1.75rem;
+    font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+    line-height: 1.45;
+    color: #f2f4fb;
+  }
+  .oneliner strong { color: var(--gold); font-weight: 600; }
+  .byline {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1.05rem;
+    color: #cfd8f2;
+  }
+
+  /* Scoreboard strip */
+  .scoreboard {
+    max-width: 68rem;
+    margin: -1.6rem auto 0;
+    padding: 0 1.25rem;
+  }
+  .score-card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 5px solid var(--gold);
+    border-radius: 6px;
+    padding: 1.1rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+    font-family: "Barlow Condensed", sans-serif;
+  }
+  .team { text-align: center; }
+  .team .name { font-size: 1.05rem; font-weight: 500; color: var(--ink-soft); }
+  .team .pts { font-size: 3.4rem; font-weight: 800; line-height: 1; color: var(--royal); }
+  .team.away .pts { color: var(--ink); }
+  .quarters { text-align: center; }
+  .quarters table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
+  .quarters th, .quarters td {
+    padding: 0.15rem 0.6rem;
+    text-align: center;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .quarters td.total { color: var(--ink); font-weight: 700; }
+  .quarters th { color: var(--royal); font-weight: 700; border-bottom: 2px solid var(--gold); }
+  .quarters .venue {
+    margin-top: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  /* Article body */
+  .article {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+    display: grid;
+    grid-template-columns: minmax(0, 44rem) minmax(14rem, 1fr);
+    gap: 3rem;
+  }
+  .article > .body { min-width: 0; }
+  h2 {
+    font-family: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--royal);
+    margin: 2.6rem 0 0.9rem;
+    padding-top: 1rem;
+    border-top: 4px solid var(--gold);
+  }
+  h2:first-child { margin-top: 0; }
+  :root[data-theme="dark"] h2 { color: var(--gold); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) h2 { color: var(--gold); } }
+  h3 {
+    font-family: "Source Serif 4", serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin: 1.4rem 0 0.25rem;
+  }
+  p { margin: 0 0 1rem; }
+  .lede { font-size: 1.2rem; line-height: 1.55; }
+  .champions {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: 0.4rem;
+  }
+  .champions li {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--royal);
+    padding: 0.5rem 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+  .champions li b { display: block; font-family: "Barlow Condensed", sans-serif; font-size: 1.15rem; font-weight: 700; }
+  .champions li.highlight { border-left-color: var(--gold); }
+  .note {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--sol);
+    padding: 0.85rem 1rem;
+    margin: 1rem 0 1.25rem;
+    font-size: 0.98rem;
+  }
+  .final-score {
+    background: var(--royal);
+    color: #fff;
+    padding: 1.4rem 1.5rem;
+    margin: 1.25rem 0;
+    border-radius: 6px;
+    font-family: "Barlow Condensed", sans-serif;
+  }
+  .final-score .label { font-size: 1.05rem; color: var(--gold); font-weight: 700; }
+  .final-score .score { font-size: 3.2rem; font-weight: 800; line-height: 1.05; }
+  .final-score .alt { font-size: 1.05rem; color: #cfd8f2; margin-top: 0.3rem; }
+
+  /* Sidebar */
+  .sidebar { position: relative; }
+  .sticky { position: sticky; top: 1.25rem; }
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 5px solid var(--royal);
+    border-radius: 6px;
+    padding: 1rem 1.1rem 0.6rem;
+    margin-bottom: 1.25rem;
+  }
+  .stat-box h4 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--royal);
+    margin: 0 0 0.5rem;
+  }
+  :root[data-theme="dark"] .stat-box h4 { color: var(--gold); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stat-box h4 { color: var(--gold); } }
+  .stat-box table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .stat-box td { padding: 0.38rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .stat-box tr:last-child td { border-bottom: 0; }
+  .stat-box td:last-child { text-align: right; font-family: "Barlow Condensed", sans-serif; font-size: 1.1rem; font-weight: 700; white-space: nowrap; }
+  .stat-box td.good:last-child { color: var(--royal); }
+  :root[data-theme="dark"] .stat-box td.good:last-child { color: var(--gold); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stat-box td.good:last-child { color: var(--gold); } }
+  .stat-box .foot { font-size: 0.85rem; color: var(--ink-soft); margin: 0.6rem 0 0.2rem; }
+  .schedule li { margin-bottom: 0.3rem; }
+  .schedule { padding-left: 1.1rem; margin: 0.3rem 0 0.5rem; font-size: 0.95rem; }
+  .schedule .out { color: var(--ink-soft); }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.25rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 52rem) {
+    .article { grid-template-columns: 1fr; gap: 1.5rem; }
+    .sticky { position: static; }
+    .score-card { grid-template-columns: 1fr 1fr; }
+    .quarters { grid-column: 1 / -1; }
+    .team .pts { font-size: 2.6rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="/" style="text-decoration:none;color:#fff">HORNS UP <span>DISPATCH</span></a>
+    <div class="dateline">Tuesday, September 15, 2026</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Week 1 postmortem</p>
+    <h1>The case for not panicking</h1>
+    <p class="oneliner">
+      The Rams lost a game played on the wrong side of the planet with 24 hours of prep, a DPOY pass rusher who needed surgery, a three-time DPOY still in Los Angeles, and a quarterback having his worst outing in eight years. <strong>On Monday night, they play at home, rested, with Donald in the building. That's a different team.</strong>
+    </p>
+    <p class="byline">By Joshua McMurray. Analysis and projections after the 27-7 loss to San Francisco in Melbourne</p>
+  </div>
+</section>
+
+<div class="scoreboard">
+  <div class="score-card">
+    <div class="team away">
+      <div class="name">49ers</div>
+      <div class="pts">27</div>
+    </div>
+    <div class="quarters">
+      <table>
+        <thead><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>F</th></tr></thead>
+        <tbody>
+          <tr><td>SF</td><td>3</td><td>7</td><td>7</td><td>10</td><td class="total">27</td></tr>
+          <tr><td>LA</td><td>0</td><td>7</td><td>0</td><td>0</td><td class="total">7</td></tr>
+        </tbody>
+      </table>
+      <div class="venue">Melbourne Cricket Ground, Thursday, Sept. 10</div>
+    </div>
+    <div class="team">
+      <div class="name">Rams</div>
+      <div class="pts">7</div>
+    </div>
+  </div>
+</div>
+
+<main class="article">
+  <div class="body">
+
+    <p class="lede">Twenty-four hours after landing in Australia, the Rams led 7-3 early in the second quarter. Then they got outscored 24-0 over the final 34 minutes, lost their new pass rusher to a knee that now needs surgery, and flew home to a week of headlines about a Super Bowl favorite that looked ordinary. Here is why the panic is premature.</p>
+
+    <h2>Schedule and travel</h2>
+    <h3>The Melbourne factor</h3>
+    <p>This was the NFL's first regular season game in Australia, and the two teams treated the trip completely differently. The 49ers arrived a full week early. The Rams showed up a little over 24 hours before kickoff. Melbourne sits 17 hours ahead of Los Angeles in September, and the flight runs 15 to 16 hours. Crossing that many time zones without an adjustment window hurts reaction time and sustained effort, and the damage shows up in the second half. Time of possession finished 33:50 to 26:10 in San Francisco's favor. That's a tired team wearing down, not a bad team.</p>
+    <h3>Circumstantial, not identity</h3>
+    <p>The Rams played one game under conditions no NFL team had ever faced. The remaining 16 games all happen in North America with standard prep weeks. The variable never repeats.</p>
+    <h3>The built-in reset</h3>
+    <p>Playing Thursday means a mini-bye. The Rams don't play again until Monday, September 21, at home against the Giants: 11 days between games, enough to recover and install fixes. Denver on Sunday night and Philadelphia follow, but the Rams face that stretch rested rather than jet-lagged.</p>
+    <h3>Math</h3>
+    <p>One loss is 5.9% of a 17-game season. Since the schedule expanded in 2021, at least 40% of playoff teams each year started 0-1 or 1-1. A division loss only matters as a tiebreaker if the teams finish tied, and the Rams get the return game on December 13 to square the head-to-head.</p>
+
+    <h2>Historical trends</h2>
+    <h3>Champions who lost their opener</h3>
+    <p>Since 2001, seven Super Bowl winners lost in Week 1:</p>
+    <ul class="champions">
+      <li><b>2001 Patriots</b>lost 23-17 to Cincinnati</li>
+      <li><b>2003 Patriots</b>lost 31-0 to Buffalo</li>
+      <li><b>2007 Giants</b>lost 45-35 at Dallas</li>
+      <li><b>2014 Patriots</b>lost 33-20 at Miami</li>
+      <li><b>2020 Buccaneers</b>lost 34-23 at New Orleans</li>
+      <li><b>2023 Chiefs</b>lost 21-20 to Detroit</li>
+      <li class="highlight"><b>2025 Seahawks</b>lost 17-13 to San Francisco</li>
+    </ul>
+    <p>That last one matters most. The defending champions lost their opener to this exact 49ers team, at home, and went on to win the Super Bowl. The 2003 Patriots lost 31-0 in Week 1, a worse margin than 27-7, and finished 14-2 with a title.</p>
+    <h3>The Rams' own pattern</h3>
+    <p>In 2024 the Rams lost their opener in overtime at Detroit, started 1-4, then won the NFC West at 10-7 and beat Minnesota in the Wild Card round. McVay teams correct midseason. This roster entered 2026 as the Super Bowl favorite, and one game in September doesn't erase that.</p>
+    <h3>Week 1 is noisy</h3>
+    <p>Week 1 results correlate weakly with final standings. Teams are still installing, rotations are unsettled, and lopsided outcomes happen more often than in any other week. The 49ers were simply the team that took advantage.</p>
+
+    <h2>Stats that actually look fine</h2>
+    <h3>The run game worked</h3>
+    <p>29 carries, 122 yards, 4.2 per carry, and a Kyren Williams touchdown. Only two runs went for a loss all game, totaling minus-2 yards, with 38 yards coming after contact and seven rushing first downs. Against a defense that added a first-round run stuffer, the ground game stayed efficient even while the score forced the Rams to abandon it.</p>
+    <h3>Pass protection held</h3>
+    <p>Stafford took zero sacks on 28 dropbacks and averaged 2.42 seconds of pocket time. The receivers dropped zero passes. Stafford put 20 of 28 throws on target, and the 41-yard chunk to Nacua showed the vertical game is live. The passing problems were a few poor decisions, not a line getting overrun.</p>
+    <h3>The defense wasn't shredded</h3>
+    <p>Purdy's box score looks great (25 of 34, 3 TDs, 105.6 rating), but look at the depth: 205 yards on 34 attempts is 6.0 per attempt, with only 88 air yards total. Twenty-eight of his 34 throws came within 10 yards. The Rams defended seven passes, picked one off, and San Francisco's longest play went 39 yards. Nothing broke deep. The 49ers scored on dinks, yards after catch, and short fields.</p>
+    <h3>Turnovers decided it</h3>
+    <p>Turnover margin was minus-1. Stafford's interception came on a drive that had reached 49ers territory, and the lost fumble was a receiving fumble, a one-off. The Rams still produced 15 first downs and 290 yards. Remove the two giveaways and this is a 17-7 game heading into the fourth quarter.</p>
+    <h3>Special teams were a strength</h3>
+    <p>The punt unit averaged 48.3 gross and 42.7 net and dropped two of three inside the 20. The kick return unit averaged 23.8 yards on five returns. Small edges, but real ones.</p>
+
+    <h2>Regression arguments</h2>
+    <h3>Stafford's floor game</h3>
+    <p>Stafford finished with a 61.2 passer rating, his lowest since 2018, and it was the first time he threw an interception without a touchdown since a 2024 loss to Miami. That's roughly 120 starts between rating games this bad. Outliers snap back, and Stafford's mean over the last five seasons sits in the mid-90s.</p>
+    <h3>Garrett played hurt, and now we know why</h3>
+    <p>Myles Garrett didn't record a single stat against the 49ers and said afterward that he felt pain in his knee, the same one the Rams managed all through camp. Two days later came the diagnosis: arthroscopic knee surgery and a trip to injured reserve, with a minimum four-game absence. He called it the worst version of himself he'd ever put on the field.</p>
+    <p>That reframes the loss. The Rams didn't get out-schemed with a healthy 23-sack DPOY on the field. They played the opener with a pass rusher who couldn't push off his knee, and it showed: zero sacks, two QB hits, one hurry as a team. The pass rush didn't fail. The pass rush wasn't there.</p>
+    <h3>The timeline lines up</h3>
+    <p>Garrett misses the Giants, Broncos, Eagles, and Bills, and becomes eligible for Week 6 at home against Arizona. McVay hasn't committed to that date, but Week 6 sits in front of an eight-game stretch that includes the 49ers rematch on December 13. A healthy Garrett by mid-October plays the entire back half of the schedule and the games that decide the NFC West. Compare that to grinding him through September on a bad knee and losing him in November.</p>
+    <h3>The 49ers ran hot</h3>
+    <p>San Francisco converted 7 of 8 red zone targets, recovered every fumble opportunity, and hit a 56-yard field goal. Red zone efficiency near 88% doesn't hold across a season. They also lost rookie receiver De'Zhaun Stribling to a non-contact ankle injury, so the version of the 49ers that beat the Rams may not be the version they face in December.</p>
+    <h3>Sluggish, not slow</h3>
+    <p>Rams defenders logged 72 combined tackles with only three misses. That's a defense in position but a half-step late: the profile of a jet-lagged unit missing its best player, not a poorly schemed one.</p>
+
+    <h2>Week 2: the Donald factor</h2>
+    <div class="note">Donald is off the Commissioner's Exempt List as of Friday, which clears him to play Monday against the Giants. McVay says the decision is still to be determined. Adam Schefter's guess: Donald debuts Monday night.</div>
+    <h3>The pass rush the Rams actually planned</h3>
+    <p>The offseason blueprint was Garrett on the edge and Donald inside. Melbourne had one of them, hobbled, and the other back in Los Angeles. San Francisco's plan showed what happens when the interior is quiet: 28 of Purdy's 34 throws went within 10 yards, he took zero sacks, and the 49ers went 7-of-12 on third down while piling up 23 first downs. Quick-game passing works when the pocket stays clean up the middle. Donald's entire career is built on making that impossible.</p>
+    <h3>Why interior pressure matters against the Giants</h3>
+    <p>New York opened with a Sunday night win over Dallas behind a young quarterback and a downhill run game. Edge rushers take the long way around; interior rushers arrive in 2.3 seconds, right when a young QB hits the top of his drop. Donald's peak pressure rate from the interior (roughly 15% of pass rush snaps) doubled most defensive tackles. Even a 70% version of that collapses the middle and forces throws off the back foot.</p>
+    <h3>The snap count reality</h3>
+    <p>Nobody should expect 60 snaps. The signing was always about December and January, and the team wants him at 100% before he touches the field. Realistic Week 2 usage is 25 to 35 snaps, weighted toward obvious passing downs. That's enough. In 2023, his last full season, Donald produced pressure on more than one of every seven pass rush snaps at age 32.</p>
+    <h3>The rally effect</h3>
+    <p>Week 1 left a long injury list beyond Garrett: linebackers Omar Speights (hip) and Nate Landman (shoulder), tight end Davis Allen (concussion), and safety Kam Curl (ankle). Donald's return gives the locker room someone to organize around, at SoFi, on Monday Night Football, in front of a home crowd instead of 100,000 neutrals on the other side of the world.</p>
+    <h3>The honest caveat</h3>
+    <p>If Donald sits, the Rams still get 11 days of rest and a home night game against a team flying cross-country. If he plays, everything below gets a little easier.</p>
+
+    <h2>Week 2 predictions</h2>
+    <p>Informed guesses, not model projections.</p>
+    <h3>Matthew Stafford</h3>
+    <p>24-of-34, 285 yards, 2 TD, 0 INT, passer rating near 108. Since 2021 he has posted a 100-plus rating in the game after a sub-70 rating more often than not.</p>
+    <h3>Kyren Williams</h3>
+    <p>18 carries, 88 yards, 1 TD, plus 3 catches for 20. The Rams ran it well in Melbourne and won't be playing from behind this time, so the volume climbs.</p>
+    <h3>Puka Nacua</h3>
+    <p>8 catches, 112 yards, 1 TD on 11 targets. He played an unusually high snap share in Week 1 and drew Stafford's only deep shot. With a normal prep week, the timing on those throws returns.</p>
+    <h3>Rams pass rush</h3>
+    <p>3 sacks, 12 pressures, 6 QB hits (up from 2). Donald, if he plays: 1 sack, 3 pressures, 1 TFL on roughly 30 snaps.</p>
+    <h3>Rams defense</h3>
+    <p>Giants held under 300 total yards, 4-of-13 on third down, 2 takeaways. Turnover margin +2 after zero giveaways. Time of possession flips to 32:30 for the Rams.</p>
+
+    <div class="final-score">
+      <div class="label">Final score prediction</div>
+      <div class="score">Rams 27, Giants 16</div>
+      <div class="alt">If Donald sits: Rams 24, Giants 20, decided in the fourth quarter</div>
+    </div>
+    <p>The Giants are a real team after beating Dallas, but they're flying to the West Coast for a Monday night game against a rested opponent that just got embarrassed in front of the world. McVay's teams respond to that setup. Stafford at home with a full week, a run game that already works, and an interior pass rush that didn't exist in Week 1 adds up to a two-score win.</p>
+
+    <h2>Rivalry framing</h2>
+    <h3>Round two, December 13</h3>
+    <p>The rematch happens at Levi's Stadium after a normal week of prep and a one-hour flight. By then the Rams will have 13 games of tape on the 49ers' new pieces, and if the recovery holds, a Garrett who has been back for two months instead of one who was hiding an injury. San Francisco beat the Rams once with the deck stacked. The December game is played with a full deck.</p>
+    <h3>Company at 0-1</h3>
+    <p>The Rams aren't alone. Houston opened 0-1 after a Bills shootout, Tampa Bay lost a game it could have won with four turnovers, and Atlanta sits at 0-1. Nobody is writing off Houston's defense after one loss, and the Rams deserve the same patience.</p>
+    <h3>The division math</h3>
+    <p>The NFC West is a three-team race with the defending champions. A single loss to a division rival in September decides nothing. Winning in December decides a lot, and that's the game the Rams still control.</p>
+
+  </div>
+
+  <aside class="sidebar">
+    <div class="sticky">
+      <div class="stat-box">
+        <h4>Numbers that held up</h4>
+        <table>
+          <tr><td>Rushing yards / per carry</td><td class="good">122 / 4.2</td></tr>
+          <tr><td>Sacks allowed</td><td class="good">0</td></tr>
+          <tr><td>Drops</td><td class="good">0</td></tr>
+          <tr><td>On-target throws</td><td class="good">20 of 28</td></tr>
+          <tr><td>SF yards per pass attempt</td><td class="good">6.0</td></tr>
+          <tr><td>SF air yards, total</td><td class="good">88</td></tr>
+          <tr><td>Passes defended</td><td class="good">7</td></tr>
+          <tr><td>Missed tackles</td><td class="good">3</td></tr>
+          <tr><td>Net punt average</td><td class="good">42.7</td></tr>
+        </table>
+      </div>
+      <div class="stat-box">
+        <h4>Numbers that will regress</h4>
+        <table>
+          <tr><td>Stafford passer rating</td><td>61.2</td></tr>
+          <tr><td>Lowest since</td><td>2018</td></tr>
+          <tr><td>Rams sacks / QB hits</td><td>0 / 2</td></tr>
+          <tr><td>Turnover margin</td><td>-1</td></tr>
+          <tr><td>SF red zone targets converted</td><td>7 of 8</td></tr>
+          <tr><td>Points allowed after 7-3 lead</td><td>24-0</td></tr>
+          <tr><td>Time of possession</td><td>26:10</td></tr>
+        </table>
+        <p class="foot">Sources: game data, SI, NFL.com, PFF reports from Sept. 11 to 15.</p>
+      </div>
+      <div class="stat-box">
+        <h4>The Garrett window</h4>
+        <ul class="schedule">
+          <li class="out">Wk 2 vs. Giants (MNF, Sept. 21)</li>
+          <li class="out">Wk 3 at Broncos (SNF)</li>
+          <li class="out">Wk 4 at Eagles</li>
+          <li class="out">Wk 5 vs. Bills (MNF)</li>
+          <li><b>Wk 6 vs. Cardinals</b>: first eligible return</li>
+          <li><b>Wk 14 at 49ers</b>, Dec. 13: the rematch</li>
+        </ul>
+        <p class="foot">Aaron Donald cleared from the exempt list Sept. 11. Week 2 status TBD.</p>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer>Horns Up Dispatch. Predictions are opinion, not projections from a statistical model.</footer>
+
+</body>
+</html>
